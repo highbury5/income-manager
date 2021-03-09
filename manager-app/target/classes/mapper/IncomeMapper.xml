@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="manager.mapper.IncomeMapper">
+
+    <select id="listByDate" resultType="manager.entity.dto.IncomeListDto">
+
+        select a.id income_id,a.business_no,a.corp_name,a.loan_term,a.loan_amount,a.start_date,a.end_date ,c.name channel_name,
+        b.fee_amount,b.real_advance_amount,b.real_endpay_amount,b.real_provide_amount
+        from income a left join  income_payment b on a.id=b.income_id
+        left join channel c on b.channel_id = c.id
+        where start_date &gt;= #{startDate} and end_date &lt;= #{endDate}
+
+    </select>
+
+
+
+</mapper>

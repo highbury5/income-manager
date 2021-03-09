@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="manager.mapper.StandingBookMapper">
+
+    <select id="listStandingBook" resultType="manager.entity.dto.StandingBookListDto">
+        select a.* ,b.user_name creater_name from standing_book a left join account b on a.creater=b.id
+    </select>
+
+    <select id="listDetail" resultType="manager.entity.dto.IncomeListDto">
+        select a.id,a.business_no,a.corp_name,a.loan_term,a.loan_amount,a.start_date,a.end_date ,c.name channel_name,
+        b.fee_amount,b.real_advance_amount,b.real_endpay_amount,b.real_provide_amount,
+        d.*
+        from income a
+        left join  income_payment b on a.id=b.income_id
+        left join channel c on b.channel_id = c.id
+        left join standing_book_detail d on a.id = d.income_id
+        where d.standing_book_id = #{standingBookId}
+    </select>
+
+</mapper>
