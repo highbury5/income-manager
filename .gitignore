@@ -1,0 +1,12 @@
+### IDEA ###
+.idea
+
+### Package File ###
+/*/target/
+/*/*/target/
+
+### MAC ###
+.DS_Store
+
+
+
