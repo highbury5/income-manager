@@ -1,5 +1,5 @@
 ### IDEA ###
-.idea
+.idea/
 
 ### Package File ###
 /*/target/
@@ -7,6 +7,3 @@
 
 ### MAC ###
 .DS_Store
-
-
-
