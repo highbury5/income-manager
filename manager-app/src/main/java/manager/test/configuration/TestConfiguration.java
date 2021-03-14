@@ -10,13 +10,12 @@ import org.springframework.context.annotation.Configuration;
 public class TestConfiguration {
 
     public TestConfiguration(){
-        log.info("TestConfiguration init................................");
+        log.info("cc init................................");
     }
 
     @Bean
     public TestUtil testUtil(){
-        TestUtil testUtil = new TestUtil();
-        return testUtil;
+        return new TestUtil();
     }
 
 }

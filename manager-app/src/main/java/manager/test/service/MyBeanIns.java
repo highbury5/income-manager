@@ -9,8 +9,8 @@ public class MyBeanIns {
     @Autowired
     MyBean myBeanIn;
 
-    public MyBeanIns(){
-        myBeanIn.print();
-    }
+//    public MyBeanIns(){
+//        myBeanIn.print();
+//    }
 
 }

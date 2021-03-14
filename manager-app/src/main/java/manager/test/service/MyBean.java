@@ -15,9 +15,9 @@ public class MyBean {
     private String name;
 
 
-    public MyBean(){
-        log.info("MyBean name is {}",name);
-    }
+//    public MyBean(){
+//        log.info("MyBean name is {}",name);
+//    }
 
     public void print(){
         log.info("print MyBean name is {}",name);
