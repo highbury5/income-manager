@@ -137,7 +137,7 @@ CREATE TABLE `product` (
   `repayment` varchar(45) DEFAULT NULL COMMENT '还款方式',
   `amount` varchar(45) DEFAULT NULL COMMENT '借款额度',
   `rate` double(11,5) DEFAULT 0 COMMENT '年化利率',
-  `standard` varchar(200) DEFAULT NULL COMMENT '准入标准',
+  `standard` varchar(500) DEFAULT NULL COMMENT '准入标准',
   `pawn` varchar(200) DEFAULT NULL COMMENT '抵押物',
   `city` varchar(200) DEFAULT NULL COMMENT '城市',
   `credit` varchar(200) DEFAULT NULL COMMENT '征信要求',
@@ -158,9 +158,9 @@ CREATE TABLE `income` (
   `id` int(11) unsigned  AUTO_INCREMENT COMMENT '进件ID',
   `business_no` varchar(20) NOT NULL COMMENT '业务编号',
   `title` varchar(200) DEFAULT NULL COMMENT '流程标题',
-  `status` int(2) NOT NULL COMMENT '状态',
-   --1.未提交（保存） 2.待认领（已提交） 3.待初审（已认领） 4.待复审认领；（已初审） 5.待复审（已认领） 6.待终审（已复审） 7.渠道咨询（已终审） 8.待渠道确认（渠道认领） 9.待合同确认（渠道确认）
-   --10.待收费确认（合同确认） 11.待放款（已收费确认） 12.待收款（已放款） 13.流程结束（已收尾款） 14.中止 15.初审退回  16.复审退回   17.终审退回 18.收费调整
+  `status` int(2) NOT NULL COMMENT '状态
+   1.未提交（保存） 2.待认领（已提交） 3.待初审（已认领） 4.待复审认领；（已初审） 5.待复审（已认领） 6.待终审（已复审） 7.渠道咨询（已终审） 8.待渠道确认（渠道认领） 9.待合同确认（渠道确认）
+   10.待收费确认（合同确认） 11.待放款（已收费确认） 12.待收款（已放款） 13.流程结束（已收尾款） 14.中止 15.初审退回  16.复审退回   17.终审退回 18.收费调整',
   `step` varchar(45) DEFAULT NULL COMMENT '当前步骤',
   `product_id` int(11) COMMENT '产品编号',
 
@@ -262,7 +262,7 @@ CREATE TABLE `income_channel` (
   `id` int(11) unsigned  AUTO_INCREMENT COMMENT '记录ID',
   `income_id` int(11) NOT NULL COMMENT '进件编号',
   `channel_id` int(11) NOT NULL COMMENT '渠道编号',
-  `status` int(2) NOT NULL COMMENT '状态', --01待发送短信  02未认领 03已认领
+  `status` int(2) NOT NULL COMMENT '状态 01待发送短信  02未认领 03已认领',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
@@ -289,9 +289,9 @@ CREATE TABLE `income_addition` (
   `id` int(11) unsigned  AUTO_INCREMENT COMMENT '进件ID',
   `business_no` varchar(20) NOT NULL COMMENT '业务编号',
   `title` varchar(200) DEFAULT NULL COMMENT '流程标题',
-  `status` int(2) NOT NULL COMMENT '状态',
-   --1.未提交（保存） 2.待认领（已提交） 3.待初审（已认领） 4.待复审认领；（已初审） 5.待复审（已认领） 6.待终审（已复审） 7.渠道咨询（已终审） 8.待渠道确认（渠道认领） 9.待合同确认（渠道确认）
-   --10.待收费确认（合同确认） 11.待放款（已收费确认） 12.待收款（已放款） 13.流程结束（已收尾款） 14.中止 15.初审退回  16.复审退回   17.终审退回
+  `status` int(2) NOT NULL COMMENT '状态
+   1.未提交（保存） 2.待认领（已提交） 3.待初审（已认领） 4.待复审认领；（已初审） 5.待复审（已认领） 6.待终审（已复审） 7.渠道咨询（已终审） 8.待渠道确认（渠道认领） 9.待合同确认（渠道确认）
+   10.待收费确认（合同确认） 11.待放款（已收费确认） 12.待收款（已放款） 13.流程结束（已收尾款） 14.中止 15.初审退回  16.复审退回   17.终审退回',
   `step` varchar(45) DEFAULT NULL COMMENT '当前步骤',
   `product_id` int(11) COMMENT '产品编号',
 
@@ -359,7 +359,7 @@ CREATE TABLE `income_send` (
   `id` int(11) unsigned AUTO_INCREMENT COMMENT '记录ID',
   `imcome_id` int(11) unsigned NOT NULL  COMMENT '进件ID',
   `channel_id` int(11) unsigned NOT NULL  COMMENT '渠道ID',
-  `status` int(2) NOT NULL COMMENT '状态', --0-未发送 1-已发送 2-已认领
+  `status` int(2) NOT NULL COMMENT '状态 0-未发送 1-已发送 2-已认领',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
@@ -425,7 +425,7 @@ DROP TABLE IF EXISTS `standing_book`;
 
 CREATE TABLE `standing_book` (
   `id` int(11) unsigned AUTO_INCREMENT COMMENT '记录ID',
-  `status` int(2) NOT NULL COMMENT '状态',   -- 0待审核 1已审核通过 2审核不通过 3作废
+  `status` int(2) NOT NULL COMMENT '状态 0待审核 1已审核通过 2审核不通过 3作废',
   `name` varchar(200) NOT NULL COMMENT '台账名称',
   `business_no` varchar(200) NOT NULL COMMENT '业务编号',
   `start_date` date NOT NULL COMMENT '开始日期',

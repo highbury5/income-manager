@@ -11,6 +11,7 @@
     <modules>
         <module>manager-dependency</module>
         <module>manager-app</module>
+        <module>manager-route</module>
     </modules>
 
     <properties>

@@ -1,5 +1,6 @@
 package manager.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -189,8 +190,8 @@ public class IncomeServiceImpl extends ServiceImpl<IncomeMapper, Income> impleme
             incomeDto.setIncomePaymentDto(incomePaymentDto);
         }
 
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("income_id",income.getId());
+        LambdaQueryWrapper<CollateralDetail> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(CollateralDetail::getIncomeId,income.getId());
         List<CollateralDetail> list = collateralDetailMapper.selectList(queryWrapper);
         incomeDto.setCollateralDetails(list);
 
